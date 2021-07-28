@@ -23,11 +23,13 @@ namespace Wlniao.WxWork
                 { "gettoken", GetTokenEncode },
                 { "getuserinfo", GetUserinfoEncode },
                 { "convert_to_openid", ConvertToOpenidEncode },
+                { "menu_create", MenuCreateEncode },
             };
             DecoderMap = new Dictionary<string, ResponseDecoder>() {
                 { "gettoken", GetTokenDecode },
                 { "getuserinfo", GetUserinfoDecode },
                 { "convert_to_openid", ConvertToOpenidDecode },
+                { "menu_create", MenuCreateDecode },
             };
         }
 
@@ -140,5 +142,36 @@ namespace Wlniao.WxWork
             }
         }
         #endregion
+
+        #region MenuCreate
+        private void MenuCreateEncode(Context ctx)
+        {
+            var req = ctx.Request as Request.MenuCreateRequest;
+            if (req != null)
+            {
+                if (string.IsNullOrEmpty(req.meuncontent))
+                {
+                    ctx.Response = new Error() { errmsg = "missing meuncontent" };
+                    return;
+                }
+                ctx.HttpRequestString = req.meuncontent;
+                ctx.RequestPath = "/cgi-bin/menu/create"
+                    + "?access_token=" + req.access_token
+                    + "&agentid=" + req.agentid;
+            }
+        }
+        private void MenuCreateDecode(Context ctx)
+        {
+            try
+            {
+                ctx.Response = JsonConvert.DeserializeObject<Response.MenuCreateResponse>(ctx.HttpResponseString);
+            }
+            catch
+            {
+                ctx.Response = new Error() { errmsg = "InvalidJsonString" };
+            }
+        }
+        #endregion
+
     }
 }

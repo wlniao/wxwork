@@ -215,5 +215,18 @@ namespace Wlniao.WxWork
             return "";
         }
         #endregion 
+
+
+        #region MenuCreate 创建应用自定义菜单
+        /// <summary>
+        /// 创建应用自定义菜单
+        /// </summary>
+        public ApiResult<MenuCreateResponse> MenuCreate(String menucontent, String token = null)
+        {
+            return GetResponseFromAsyncTask(CallAsync<MenuCreateRequest, MenuCreateResponse>("menu_create"
+                , new MenuCreateRequest() {meuncontent= menucontent, agentid = AgentId, access_token = string.IsNullOrEmpty(token) ? GetToken() : token }
+                , System.Net.Http.HttpMethod.Post));
+        }
+        #endregion 
     }
 }
