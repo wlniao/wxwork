@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Wlniao.WxWork.Response
+namespace Wlniao.WxWork.Auth.Response
 {
     /// <summary>
     /// 获取access_token 的输出内容
     /// </summary>
-    public class GetTokenResponse : Wlniao.Handler.IResponse
+    public class GetTokenResponse : BaseResponse
     {
-        /// <summary>
-        /// 出错返回码，为0表示成功，非0表示调用失败
-        /// </summary>
-        public int errcode { get; set; }
-        /// <summary>
-        /// 返回码提示语
-        /// </summary>
-        public string errmsg { get; set; }
         /// <summary>
         /// 获取到的凭证，最长为512字节
         /// </summary>

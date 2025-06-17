@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Wlniao.WxWork.Request
+namespace Wlniao.WxWork.User.Request
 {
     /// <summary>
     /// userid与openid互换 的请求参数
@@ -11,9 +11,5 @@ namespace Wlniao.WxWork.Request
         /// 企业内的成员id
         /// </summary>
         public string userid { get; set; }
-        /// <summary>
-        /// 调用接口凭证
-        /// </summary>
-        public string access_token { get; set; }
     }
 }

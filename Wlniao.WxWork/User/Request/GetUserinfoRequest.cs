@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Wlniao.WxWork.Request
+namespace Wlniao.WxWork.User.Request
 {
     /// <summary>
     /// 获取访问用户身份 的请求参数

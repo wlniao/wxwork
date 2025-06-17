@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Wlniao.WxWork.Request
+namespace Wlniao.WxWork.Base.Request
 {
     /// <summary>
     /// 创建应用自定义菜单 的请求参数

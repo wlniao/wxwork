@@ -7,60 +7,12 @@ namespace Wlniao.WxWork
     /// <summary>
     /// 请求线程
     /// </summary>
-    public class Context : Wlniao.Handler.IContext
+    public abstract class Context : Wlniao.Handler.Context
     {
         /// <summary>
-        /// 企业团体Id
+        /// 接口凭据是否为必须
         /// </summary>
-        public string CorpId { get; set; }
-        /// <summary>
-        /// 企业内部应用Id
-        /// </summary>
-        public string AgentId { get; set; }
-        /// <summary>
-        /// 企业内部开发密钥
-        /// </summary>
-        public string AgentSecret { get; set; }
-        /// <summary>
-        /// 接口调用凭据
-        /// </summary>
-        public string AccessToken { get; set; }
-        /// <summary>
-        /// HTTP请求方式
-        /// </summary>
-        public System.Net.Http.HttpMethod Method { get; set; }
-        /// <summary>
-        /// 要调用的API操作
-        /// </summary>
-        public string Operation { get; set; }
-        /// <summary>
-        /// 请求的地址
-        /// </summary>
-        public string RequestHost { get; set; }
-        /// <summary>
-        /// 要调用的路径
-        /// </summary>
-        public string RequestPath { get; set; }
-        /// <summary>
-        /// 要发送的请求内容
-        /// </summary>
-        public Wlniao.Handler.IRequest Request { get; set; }
-        /// <summary>
-        /// API的输出内容
-        /// </summary>
-        public Wlniao.Handler.IResponse Response { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public Task<System.Net.Http.HttpResponseMessage> HttpTask;
-        /// <summary>
-        /// 请求使用的证书
-        /// </summary>
-        public System.Security.Cryptography.X509Certificates.X509Certificate Certificate;
-        /// <summary>
-        /// 输出的状态
-        /// </summary>
-        public System.Net.HttpStatusCode StatusCode = System.Net.HttpStatusCode.Created;
+        internal protected bool TokenRequired { get; set; }
         /// <summary>
         /// 请求的Headers参数
         /// </summary>
@@ -70,76 +22,8 @@ namespace Wlniao.WxWork
         /// </summary>
         public Dictionary<String, String> HttpResponseHeaders;
         /// <summary>
-        /// 请求的内容
+        /// 输出检查方法
         /// </summary>
-        public byte[] HttpRequestBody { get; set; }
-        /// <summary>
-        /// 请求的内容
-        /// </summary>
-        public string HttpRequestString { get; set; }
-        /// <summary>
-        /// 输出的内容
-        /// </summary>
-        public byte[] HttpResponseBody { get; set; }
-        /// <summary>
-        /// 输出的内容
-        /// </summary>
-        public string HttpResponseString { get; set; }
-        /// <summary>
-        /// 请求重试次数
-        /// </summary>
-        public int Retry { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public Context()
-        {
-            Retry = 0;
-        }
-
-        private static Dictionary<String, TokenCache> tokens = new Dictionary<string, TokenCache>();
-        /// <summary>
-        /// 检查或同步
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckAccessToken()
-        {
-            if (!tokens.ContainsKey(AgentId))
-            {
-                tokens.Add(AgentId, new TokenCache());
-            }
-            if (tokens[AgentId].past < DateTime.Now)
-            {
-                var rlt = Wlniao.OpenApi.Wx.GetAccessToken(AgentId, AgentSecret);
-                if (rlt.success)
-                {
-                    AccessToken = rlt.data;
-                    var expires = 900;
-                    if (rlt.message.Contains("expires in"))
-                    {
-                        expires = cvt.ToInt(rlt.message.SplitBy(" ")[2]);
-                    }
-                    tokens[AgentId].past = DateTime.Now.AddSeconds(expires);
-                    tokens[AgentId].token = rlt.data;
-                }
-            }
-            else
-            {
-                AccessToken = tokens[AgentId].token;
-            }
-            if (string.IsNullOrEmpty(AccessToken))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private class TokenCache
-        {
-            public String token = "";
-            public DateTime past = DateTime.MinValue;
-        }
+        public abstract void CheckRespose<TResponse>(ApiResult<TResponse> rlt) where TResponse : Wlniao.Handler.IResponse;
     }
 }

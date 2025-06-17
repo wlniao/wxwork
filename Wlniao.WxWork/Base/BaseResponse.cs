@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Wlniao.WxWork.Response
+namespace Wlniao.WxWork
 {
     /// <summary>
-    /// 创建应用自定义菜单 的输出内容
+    /// 基础输出
     /// </summary>
-    public class MenuCreateResponse : Wlniao.Handler.IResponse
+    public class BaseResponse : Wlniao.Handler.IResponse
     {
         /// <summary>
         /// 出错返回码，为0表示成功，非0表示调用失败
         /// </summary>
-        public int errcode { get; set; }
+        public string errcode { get; set; }
         /// <summary>
         /// 返回码提示语
         /// </summary>
