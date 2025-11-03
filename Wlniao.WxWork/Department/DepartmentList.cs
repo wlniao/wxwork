@@ -12,7 +12,7 @@ namespace Wlniao.WxWork.Department
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public DepartmentList(String id = "1")
+        public DepartmentList(string id = "1")
         {
             base.Method = "GET";
             base.ApiPath = "/cgi-bin/department/list?access_token=ACCESS_TOKEN&id=" + id;

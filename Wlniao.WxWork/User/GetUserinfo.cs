@@ -12,7 +12,7 @@ namespace Wlniao.WxWork.User
         /// 
         /// </summary>
         /// <param name="code"></param>
-        public GetUserinfo(String code)
+        public GetUserinfo(string code)
         {
             base.Method = "GET";
             base.ApiPath = "/cgi-bin/user/getuserinfo?access_token=ACCESS_TOKEN&code=" + code;

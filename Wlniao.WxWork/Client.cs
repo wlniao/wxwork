@@ -152,7 +152,7 @@ namespace Wlniao.WxWork
         /// 是否有AccessToken
         /// </summary>
         /// <returns></returns>
-        public Boolean HasAccessToken
+        public bool HasAccessToken
         {
             get
             {
@@ -186,7 +186,7 @@ namespace Wlniao.WxWork
         /// <summary>
         /// 
         /// </summary>
-        public Client(String accessToken)
+        public Client(string accessToken)
         {
             this.CorpId = CfgCorpId;
             this.AgentId = CfgAgentId;
@@ -198,7 +198,7 @@ namespace Wlniao.WxWork
         /// <summary>
         /// 
         /// </summary>
-        public Client(String corpId, String agentId, String appSecret)
+        public Client(string corpId, string agentId, string appSecret)
         {
             this.CorpId = corpId;
             this.AgentId = agentId;
@@ -207,7 +207,7 @@ namespace Wlniao.WxWork
         /// <summary>
         /// 
         /// </summary>
-        public Client(String accessToken, String corpId, String agentId, String appSecret)
+        public Client(string accessToken, string corpId, string agentId, string appSecret)
         {
             this.CorpId = corpId;
             this.AgentId = agentId;
@@ -297,7 +297,7 @@ namespace Wlniao.WxWork
                     var bytes = ctx.RequestBody as byte[];
                     if (text == null && bytes == null && ctx.RequestBody != null)
                     {
-                        text = Json.ToString(ctx.RequestBody);
+                        text = Json.Serialize(ctx.RequestBody);
                     }
                     if (bytes != null)
                     {
@@ -309,21 +309,21 @@ namespace Wlniao.WxWork
                     }
                     else
                     {
-                        text = Newtonsoft.Json.JsonConvert.SerializeObject(ctx.RequestBody);
+                        text = Wlniao.Json.Serialize(ctx.RequestBody);
                         task = http.PostAsync(ctx.ApiPath, new System.Net.Http.StringContent(text));
                     }
                 }
                 task.Result.Content.ReadAsStringAsync().ContinueWith((res) =>
                 {
                     ctx.ResponseBody = res.Result;
-                    ctx.HttpResponseHeaders = new Dictionary<String, String>();
+                    ctx.HttpResponseHeaders = new Dictionary<string, string>();
                     var status = (int)task.Result.StatusCode;
                     if (status >= 200 && status < 300)
                     {
                         try
                         {
                             result.code = "0";
-                            result.data = Newtonsoft.Json.JsonConvert.DeserializeObject<TResponse>(res.Result);
+                            result.data = Wlniao.Json.Deserialize<TResponse>(res.Result);
                             result.message = task.Result.ReasonPhrase;
                             foreach (var item in task.Result.Headers)
                             {

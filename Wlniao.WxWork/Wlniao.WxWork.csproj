@@ -1,48 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Version>0.0.5</Version>
-    <PackageId>Wlniao.WxWork</PackageId>
-    <Description>Weixin Work Extend for Wlniao.XCore</Description>
-    <AssemblyName>Wlniao.WxWork</AssemblyName>
-    <Copyright>Copyright 2019 Wlniao</Copyright>
-	<Authors>Chaoyi Xie</Authors>
-	<TargetFramework>net8.0</TargetFramework>
-	<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-	<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-	<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<RootNamespace>Wlniao.WxWork</RootNamespace>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/wlniao/wxwork</RepositoryUrl>
-    <PackageUrl>https://static.wlniao.com/wlniao/logo.png</PackageUrl>
-    <PackageProjectUrl></PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
-	<PackageOutputPath>C:\Users\xcy7751\OneDrive\Path\packages</PackageOutputPath>
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>wlniao.png</PackageIcon>
-</PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Handler\**" />
-    <EmbeddedResource Remove="Handler\**" />
-    <None Remove="Handler\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Context2.cs" />
-    <Compile Remove="Error.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\wlniao.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Department\Request\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Wlniao.XCore" Version="8.0.43" />
-  </ItemGroup>
+    <PropertyGroup>
+        <Version>0.0.6</Version>
+        <PackageId>Wlniao.WxWork</PackageId>
+        <Description>Weixin Work Extend for Wlniao.XCore</Description>
+        <AssemblyName>Wlniao.WxWork</AssemblyName>
+        <Copyright>Copyright 2019 Wlniao</Copyright>
+        <Authors>Chaoyi Xie</Authors>
+        <TargetFramework>net8.0</TargetFramework>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <RootNamespace>Wlniao.WxWork</RootNamespace>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <RepositoryUrl>https://github.com/wlniao/wxwork</RepositoryUrl>
+        <PackageUrl>https://static.wlniao.com/wlniao/logo.png</PackageUrl>
+        <PackageProjectUrl>https://github.com/wlniao/wxwork</PackageProjectUrl>
+        <PackageOutputPath>$(HOMEDRIVE)$(HOMEPATH)\.nuget</PackageOutputPath>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Wlniao.XCore" Version="8.0.49" />
+    </ItemGroup>
 
 </Project>

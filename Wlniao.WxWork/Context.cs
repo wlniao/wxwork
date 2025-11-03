@@ -12,15 +12,15 @@ namespace Wlniao.WxWork
         /// <summary>
         /// 接口凭据是否为必须
         /// </summary>
-        internal protected bool TokenRequired { get; set; }
+        protected internal bool TokenRequired { get; set; }
         /// <summary>
         /// 请求的Headers参数
         /// </summary>
-        public Dictionary<String, String> HttpRequestHeaders;
+        public new Dictionary<string, string> HttpRequestHeaders;
         /// <summary>
         /// 输出的Headers参数
         /// </summary>
-        public Dictionary<String, String> HttpResponseHeaders;
+        public new Dictionary<string, string> HttpResponseHeaders;
         /// <summary>
         /// 输出检查方法
         /// </summary>
