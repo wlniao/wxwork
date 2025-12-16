@@ -5,7 +5,7 @@ namespace Wlniao.WxWork.Base.Request
     /// <summary>
     /// 创建应用自定义菜单 的请求参数
     /// </summary>
-    public class MenuCreateRequest : Wlniao.Handler.IRequest
+    public class MenuCreateRequest
     {
         /// <summary>
         /// 企业内部应用Id

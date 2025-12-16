@@ -10,7 +10,7 @@ namespace Wlniao.WxWork
     /// <summary>
     /// 企业微信内部开发客户端
     /// </summary>
-    public class Client : Wlniao.Handler.IClient
+    public class Client
     {
         #region 企业内部开发配置信息
         internal static string _ApiHost = null;     //企业团体Id
@@ -222,7 +222,6 @@ namespace Wlniao.WxWork
         /// <param name="ctx"></param>
         /// <returns></returns>
         public ApiResult<TResponse> Handle<TResponse>(Context ctx)
-            where TResponse : Wlniao.Handler.IResponse
         {
             if (string.IsNullOrEmpty(ctx.ApiHost))
             {
@@ -238,7 +237,6 @@ namespace Wlniao.WxWork
         /// <param name="ctx"></param>
         /// <returns></returns>
         public Task<ApiResult<TResponse>> HandleAsync<TResponse>(Context ctx)
-            where TResponse : Wlniao.Handler.IResponse
         {
             var result = new ApiResult<TResponse> { node = XCore.WebNode, code = "-1", success = false, message = "unkown error" };
             if (string.IsNullOrEmpty(ctx.ApiHost))

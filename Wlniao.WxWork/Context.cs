@@ -7,7 +7,7 @@ namespace Wlniao.WxWork
     /// <summary>
     /// 请求线程
     /// </summary>
-    public abstract class Context : Wlniao.Handler.Context
+    public abstract class Context
     {
         /// <summary>
         /// 接口凭据是否为必须
@@ -24,6 +24,6 @@ namespace Wlniao.WxWork
         /// <summary>
         /// 输出检查方法
         /// </summary>
-        public abstract void CheckRespose<TResponse>(ApiResult<TResponse> rlt) where TResponse : Wlniao.Handler.IResponse;
+        public abstract void CheckRespose<TResponse>(ApiResult<TResponse> rlt);
     }
 }

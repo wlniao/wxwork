@@ -5,7 +5,7 @@ namespace Wlniao.WxWork
     /// <summary>
     /// 基础输出
     /// </summary>
-    public class BaseResponse : Wlniao.Handler.IResponse
+    public class BaseResponse
     {
         /// <summary>
         /// 出错返回码，为0表示成功，非0表示调用失败

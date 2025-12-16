@@ -5,7 +5,7 @@ namespace Wlniao.WxWork.Auth.Request
     /// <summary>
     /// 获取access_token 的请求参数
     /// </summary>
-    public class GetTokenRequest : Wlniao.Handler.IRequest
+    public class GetTokenRequest
     {
         /// <summary>
         /// 企业ID，获取方式参考：https://work.weixin.qq.com/api/doc#90000/90135/90665/corpid

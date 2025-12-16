@@ -5,7 +5,7 @@ namespace Wlniao.WxWork.User.Request
     /// <summary>
     /// 获取访问用户身份 的请求参数
     /// </summary>
-    public class GetUserinfoRequest : Wlniao.Handler.IRequest
+    public class GetUserinfoRequest
     {
         /// <summary>
         /// 通过成员授权获取到的code，最大为512字节。每次成员授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期。
